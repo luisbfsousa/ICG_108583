@@ -1,0 +1,236 @@
+body {
+    background: url('images/space.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: yellow;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+  
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+  
+.title {
+    font-size: 3em;
+    text-shadow: 0 0 20px yellow;
+    animation: starwars-fade 2s ease-in-out infinite alternate;
+}
+  
+@keyframes starwars-fade {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0.8; transform: scale(1.05); }
+}
+  
+.play-button {
+    background-color: yellow;
+    color: black;
+    font-size: 1.5em;
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    top: 80px;
+}
+  
+.play-button:hover {
+    background-color: orange;
+}
+  
+.volume-label {
+    font-size: 0.8em;
+}
+  
+.volume-slider {
+    width: 150px;
+    margin-top: 50px;
+}
+  
+.game-container {
+    display: none;
+    width: 400px;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 3px solid yellow;
+    box-shadow: 0 0 20px yellow;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+  
+body.game-started {
+    background: black !important;
+}
+
+.game-over-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+  
+.game-over-popup {
+    text-align: center;
+}
+  
+.game-over-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 48px;
+    color: yellow;
+    margin-bottom: 30px;
+}
+  
+.game-over-input-container {
+    margin-bottom: 30px;
+}
+  
+.game-over-input {
+    display: inline-block;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 24px;
+    color: yellow;
+    outline: none;
+    border: none;
+    background: none;
+    caret-color: transparent;
+}
+  
+.game-over-caret {
+    margin-left: -15px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 24px;
+    color: yellow;
+}
+  
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+  
+.blinking {
+    animation: blink 1s infinite;
+}
+  
+.game-over-button {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 24px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background: yellow;
+    color: black;
+    border: none;
+    box-shadow: 0 0 10px yellow;
+}
+
+.hidden {
+    display: none;
+}
+
+.leaderboard {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    width: 200px;               /* adjust as needed */
+    background-color: #000;     /* black box */
+    border: 2px solid #fff;     /* white border */
+    border-radius: 5px;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    text-shadow: 0 0 2px currentColor;
+    padding: 10px;
+    pointer-events: none;
+    z-index: 100;
+}
+  
+.leaderboard-title {
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+  
+.leaderboard-content {
+    display: flex;
+    flex-direction: column;
+}
+  
+.leaderboard-row {
+    display: flex;
+    margin-bottom: 5px;
+}
+  
+.leaderboard-pos,
+.leaderboard-name,
+.leaderboard-score {
+    display: inline-block;
+    width: 50px;
+}
+  
+.leaderboard-name {
+    width: 80px;
+    text-transform: uppercase;
+}
+  
+.leaderboard-pos {
+    color: red;
+}
+  
+.leaderboard-score {
+    text-align: left;
+}
+  
+.score-board {
+    position: absolute;
+    bottom: -10px;
+    right: 10px;
+    width: 170px;
+    background-color: #000;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 18px;
+    text-shadow: 0 0 2px #fff;
+    padding: 20px 25px 20px;
+    pointer-events: none;
+    z-index: 100;
+    font-size: 14px;
+}
+
+.lives-container {
+    position: absolute;
+    color: yellow;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    z-index: 110;
+    pointer-events: none;
+} 
