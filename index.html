@@ -12,14 +12,12 @@
   <div class="menu">
     <h1 class="title">Space Invaders ThreeJS</h1>
     <p class="instructions">A/D to move ship, Spacebar to shoot</p>
-    <p class="instructions">In this demo version "P" to change camera</p>
     <button class="play-button" id="playButton">Play</button>
     <div class="volume-container">
       <span class="volume-label">Music Volume</span>
       <input type="range" class="volume-slider" id="volumeControl" min="0" max="100" value="50" />
     </div>
   </div>
-
   <div id="gameOverOverlay" class="game-over-overlay hidden">
     <div class="game-over-popup">
       <h1 class="game-over-title">Game Over</h1>
@@ -30,52 +28,39 @@
       <button id="gameOverSubmit" class="game-over-button">Submit</button>
     </div>
   </div>
-
   <div id="leaderboard" class="leaderboard hidden">
     <h2 class="leaderboard-title">Leaderboard</h2>
     <div id="leaderboardContent" class="leaderboard-content"></div>
   </div>
-
-  <div id="scoreBoard" class="score-board hidden">
-    Score : 0
-  </div>
-
+  <div id="scoreBoard" class="score-board hidden"> Score : 0 </div>
   <div id="livesContainer" class="lives-container hidden"></div>
-
   <audio id="backgroundMusic">
     <source src="sounds/SpaceInvaders.mp3" type="audio/mpeg" />
   </audio>
-
   <script>
     let music = document.getElementById("backgroundMusic");
     let volumeSlider = document.getElementById("volumeControl");
     let playButton = document.getElementById("playButton");
     let menu = document.querySelector(".menu");
-
     function startMusic() {
       music.volume = volumeSlider.value / 100;
       music.play().catch(error => console.error("Music playback blocked:", error));
     }
-
     document.addEventListener("click", startMusic, { once: true });
     document.addEventListener("keydown", startMusic, { once: true });
-
     volumeSlider.addEventListener("input", event => {
       music.volume = event.target.value / 100;
     });
-
     music.loop = true;
     music.addEventListener("ended", function () {
       console.warn("Music ended unexpectedly. Restarting...");
       music.currentTime = 0;
       music.play();
     });
-
     playButton.addEventListener("click", () => {
       menu.style.transition = "transform 1s ease-in-out, opacity 1s ease-in-out";
       menu.style.transform = "scale(3) rotate(20deg)";
       menu.style.opacity = "0";
-
       setTimeout(() => {
         document.body.classList.add("game-started");
         menu.style.display = "none";
@@ -85,8 +70,14 @@
       }, 1000);
     });
   </script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="SpaceInvaders.js"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js",
+        "three/addons/": "https://threejs.org/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module" src="SpaceInvaders.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-let uniforms; 
+let uniforms;
 
 export async function renderCustomShader() {
   const fragmentShaderCode = await fetch('/shaders/space.glsl')
@@ -13,7 +13,7 @@ export async function renderCustomShader() {
   container.style.left = '0';
   container.style.width = '100%';
   container.style.height = '100%';
-  container.style.zIndex = '-1';
+  container.style.zIndex = '-1'; 
   document.body.appendChild(container);
 
   const scene = new THREE.Scene();

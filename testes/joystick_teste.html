@@ -26,22 +26,27 @@
 
     <script type="importmap">
         {
-            "imports": {
-                  "three": "https://threejs.org/build/three.module.js",
-                  "GLTFLoader": "https://threejs.org/examples/jsm/loaders/GLTFLoader.js"
-            }
+          "imports": {
+            "three": "https://threejs.org/build/three.module.js",
+            "three/addons/": "https://threejs.org/examples/jsm/"
           }
-    </script>
+        }
+        </script>
 
     <script type="module">
         import { renderCustomShader } from './background.js';
-      
+        import { PixelArt } from './pixelArt.js';
+        import { createOctopus, createSquid, createCrab } from '../models/enemys.js';
+        
+        window.createOctopus = createOctopus;
+        window.createSquid = createSquid;
+        window.createCrab = createCrab;
+        
         (async () => {
           window.bgController = await renderCustomShader();
         })();
-      </script>
-      
-      <script type="module" src="joystick.js"></script>
+    </script>
+    <script type="module" src="joystick.js"></script>
       
 
 

@@ -1,5 +1,7 @@
 import * as THREE from 'three';
-import { GLTFLoader } from 'GLTFLoader';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { createOctopus, createSquid, createCrab } from '../models/enemys.js';
+
 
 let joystickMoving, base, sphere, cylinder, button;
 let isDragging = false;
@@ -31,6 +33,24 @@ function init() {
   const pointLight = new THREE.PointLight(0xffffff, 1, 1000);
   pointLight.position.set(50, 50, 50);
   scene.add(pointLight);
+
+  const octopus = createOctopus();
+  octopus.mesh.position.set(0, 140, -50);
+  octopus.mesh.rotation.y = Math.PI/2.5;
+  octopus.mesh.scale.set(2, 2, 2);
+  scene.add(octopus.mesh);
+
+  const crab = createCrab();
+  crab.mesh.position.set(0, 140, -100); 
+  crab.mesh.rotation.y = Math.PI/2.5;
+  crab.mesh.scale.set(2, 2, 2);
+  scene.add(crab.mesh);
+
+  const squid = createSquid();
+  squid.mesh.position.set(0, 140, -150);
+  squid.mesh.rotation.y = Math.PI/2.5;
+  squid.mesh.scale.set(2, 2, 2);
+  scene.add(squid.mesh);
 
   const baseGeometry = new THREE.CylinderGeometry(8, 8, 5, 32);
   const baseMaterial = new THREE.MeshStandardMaterial({ color: 0x808080, metalness: 0.5, roughness: 0.5 });
@@ -198,7 +218,7 @@ function animate() {
     worldPos.project(camera); 
 
     const x = (worldPos.x + 1) / 2;
-    const y = (1 - worldPos.y) / 2; 
+    const y = (1 - worldPos.y) / 2;
 
     window.bgController.updateJoystick(new THREE.Vector2(x, y));
   }

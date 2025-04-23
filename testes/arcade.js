@@ -176,15 +176,15 @@ function animate() {
   renderer.render(scene, camera);
 
   if (window.bgController) {
-        const worldPos = new THREE.Vector3();
+    const worldPos = new THREE.Vector3(); 
     sphere.getWorldPosition(worldPos);
 
     worldPos.project(camera); 
 
     const x = (worldPos.x + 1) / 2;
-    const y = (1 - worldPos.y) / 2; // or 1 - ((worldPos.y + 1)/2)
+    const y = (1 - worldPos.y) / 2;
 
-´    window.bgController.updateJoystick(new THREE.Vector2(x, y));
+    window.bgController.updateJoystick(new THREE.Vector2(x, y));
   }
 }
 
